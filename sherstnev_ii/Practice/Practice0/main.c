@@ -6,15 +6,15 @@ void main()
     float x1, y1, x2, y2, r1, r2, t;
     printf("Enter x1   ");
     scanf("%f", &x1);
-    printf("\n Enter y1   ");
+    printf("\nEnter y1   ");
     scanf("%f", &y1);
-    printf("\n Enter r1   ");
+    printf("\nEnter r1   ");
     scanf("%f", &r1);
-    printf("\n Enter x2   ");
+    printf("\nEnter x2   ");
     scanf("%f", &x2);
-    printf("\n Enter y2   ");
+    printf("\nEnter y2   ");
     scanf("%f", &y2);
-    printf("\n Enter r2   ");
+    printf("\nEnter r2   ");
     scanf("%f", &r2);
     t = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     if ((x1 == x2) && (y1 == y2) && (r1 == r2))
