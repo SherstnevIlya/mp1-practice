@@ -75,7 +75,7 @@ void Matrix::Print()
 //Перегрузки
 
 Matrix Matrix::operator +(const Matrix& M) {
-	if (rows != M.rows || cols != M.cols) throw "Different dimension";
+	if (rows != M.rows || cols != M.cols) throw (string)"Different dimension";
 	Matrix res(rows, cols);
 	for (int i = 0; i < rows*cols; i++) {
 		res.elements[i] = elements[i] + M.elements[i];
@@ -84,7 +84,7 @@ Matrix Matrix::operator +(const Matrix& M) {
 }
 
 Matrix Matrix::operator +(double d) {
-	if (rows == 0 || cols == 0) throw "Emprty matrix";
+	if (rows == 0 || cols == 0) throw (string)"Emprty matrix";
 	Matrix res(rows, cols);
 	for (int i = 0; i < rows*cols; i++) {
 		res.elements[i] = elements[i] + d;
@@ -95,7 +95,7 @@ Matrix Matrix::operator +(double d) {
 Matrix Matrix::operator -(const Matrix& M) {
 	if (rows != M.rows || cols != M.cols)
 	{
-		throw "Different dimension";
+		throw (string)"Different dimension";
 	}
 	Matrix res(rows, cols);
 	for (int i = 0; i < rows*cols; i++) {
@@ -115,7 +115,7 @@ Matrix Matrix::operator -(double d) {
 Matrix Matrix::operator *(const Matrix& M) {
 	if (cols != M.rows)
 	{
-		throw "Matrixes are not available to multiply";
+		throw (string)"Matrixes are not available to multiply";
 	}
 	Matrix res(rows, M.cols);
 	for (int i = 0; i < rows; i++)
@@ -146,7 +146,7 @@ Matrix Matrix::operator =(const Matrix& M) {
 
 double* Matrix::operator [](int r) {
 	if (r < 0 || r >= rows) {
-		throw "Wrong element";
+		throw (string)"Wrong element";
 	}
 	return &elements[r * cols];
 }
