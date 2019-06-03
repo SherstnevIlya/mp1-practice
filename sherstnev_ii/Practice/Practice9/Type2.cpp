@@ -9,6 +9,11 @@ Type2::Type2(Date d, string s, Time t) {
 	Duration = t;
 }
 
+string Type2::getDescription()
+{
+	return description;
+}
+
 void Type2::Print()
 {
 	cout << getDescription() << " during " << Duration.getHours() << " hours and " << Duration.getMinutes() << " minutes " << endl;

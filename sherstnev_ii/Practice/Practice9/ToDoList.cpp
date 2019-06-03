@@ -7,12 +7,13 @@
 using namespace std;
 
 ToDoList::ToDoList(int k) {
-	tasks = new Task*[count];
+	count = k;
+	tasks = new Task*[k];
 }
 
 void ToDoList::Print(int k) {
 	if (k < 0 || k >= count) throw (string)"Wrong number";
-	(*tasks[k]).Print();
+	tasks[k]->Print();
 }
 
 void ToDoList::Print(Date d) {
