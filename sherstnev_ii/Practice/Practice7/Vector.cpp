@@ -56,6 +56,7 @@ void Vector::PrintVector(int n)
 
 double Vector::Length()
 {
+	if (size == 0) throw (string)"Empty vector";
 	int i;
 	double res = 0.0;
 	for (i = 0; i < size; i++)
@@ -69,7 +70,7 @@ double Vector::Angle(Vector& V)
 {
 	if (size != V.size)
 	{
-		throw "Different dimension";
+		throw (string)"Different dimension";
 	}
 	double l1, l2, sc;
 	l1 = Length();
@@ -94,7 +95,7 @@ Vector Vector::operator + (const Vector& V)
 {
 	if (size != V.size)
 	{
-		throw "Different dimension";
+		throw (string)"Different dimension";
 	}
 	Vector v123(size);
 	for (int i = 0; i < size; i++)
@@ -108,7 +109,7 @@ Vector Vector::operator - (const Vector& V)
 {
 	if (size != V.size)
 	{
-		throw "Different dimension";
+		throw (string)"Different dimension";
 	}
 	Vector v123(size);
 	for (int i = 0; i < size; i++)
@@ -120,6 +121,7 @@ Vector Vector::operator - (const Vector& V)
 
 Vector Vector::operator * (double n)
 {
+	if (size == 0) throw (string)"Empty vector";
 	Vector v123(size);
 	for (int i = 0; i < v123.size; i++) {
 		v123.elements[i] = elements[i] * n;
@@ -131,7 +133,7 @@ double Vector::operator * (const Vector& V)
 {
 	if (size != V.size)
 	{
-		throw "Different dimension";
+		throw (string)"Different dimension";
 	}
 	double sum = 0.0;
 	Vector v123(size);
@@ -145,7 +147,7 @@ double Vector::operator [] (int n)
 {
 	if ((n < 0) || (n >= size))
 	{
-		throw "Wrong element";
+		throw (string)"Wrong element";
 	}
 	return elements[n];
 }
@@ -154,7 +156,7 @@ Vector Vector::operator = (const Vector& V)
 {
 	if (size != V.size)
 	{
-		throw "Different dimension";
+		throw (string)"Different dimension";
 	}
 	for (int i = 0; i < size; i++) {
 		elements[i] = V.elements[i];
