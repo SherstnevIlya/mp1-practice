@@ -9,6 +9,11 @@ Type1::Type1(Date d, string s) {
 	((Task*)this)->description = s;
 }
 
+string Type1::getDescription()
+{
+	return description;
+}
+
 void Type1::Print() {
 	cout << getDescription() << endl;
 }
