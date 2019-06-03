@@ -6,47 +6,37 @@
 #define N 5
 
 char* Names[N] = { "Хлеб", "Молоко", "Сыр", "Сметана", "Кефир"};
-int Codes[N] = { 234, 1235, 1236, 1237, 1238};
+char Codes[N][5] = {"0234", "1235", "1236", "1237", "1238"};
 int Prices[N] = { 0 };
 int Discounts[N] = { 0 };
 int Count[N] = { 0 };
 
 void Scan() {
-	int i = 0, flag = 0, Code = 0;
+	char Code[5];
+	int i = 0, flag = -1;
 	printf("Введите штрих-код товара: #");
-	scanf("%d", &Code);
-	for (i = 0; i < N; i++) {
-		if (Codes[i] == Code) flag = i + 1;
+	fflush(stdin);
+	fgets(Code, 5, stdin);
+	for (i; i < N; i++) {
+		if (Codes[i] == Code) flag = i;
 	}
-	if (flag != 0) {
-		printf("#");
-		if (Codes[flag - 1] < 10) {
-			printf("000%d", Codes[flag - 1]);
-		}
-		else if (Codes[flag - 1] < 100) {
-			printf("00%d", Codes[flag - 1]);
-		}
-		else if (Codes[flag - 1] < 1000) {
-			printf("0%d", Codes[flag - 1]);
-		}
-		else {
-			printf("%d", Codes[flag - 1]);
-		}
-		printf("   ");
-		fputs(Names[flag - 1], stdout);
-		printf("   %d р   %d процентов \n", Prices[flag - 1], Discounts[flag - 1]);
+	if (flag != -1) {
+		fputs(Names[flag], stdout);
+		printf(" %d р со скидкой %d % \n", Prices[flag], Discounts[flag]);
 	}
 	else {
-		printf("Такого товара не существует \n");
+		printf("Такого товара не существует\n");
 	}
 }
 
 void AddToCheck() {
-	int i, flag = 0, Code = 0;
+	char Code[5];
+	int i, flag = 0;
 	printf("\nВведите штрих-код товара, который вы хотите добавить: #");
-	scanf("%d", &Code);
+	fflush(stdin);
+	fgets(Code, 5, stdin);
 	for (i = 0; i < N; i++) {
-		if (Codes[i] == Code) flag = i + 1;
+		if (Codes[i] == Code) flag = i;
 	}
 	if (flag != 0) {
 		printf("\nКакое количество товара вы хотите добавить? (Введите 0, если не хотите добавлять) \n");
@@ -79,7 +69,7 @@ void Print() {
 		printf("Итоговая стоимость: %d р \n \n", TotalPrice - TotalDiscount);
 	}
 	else {
-		printf("Корзина пуста, вывести чек невозможно");
+		printf("Корзина пуста, вывести чек невозможно\n");
 	}
 }
 
@@ -93,7 +83,10 @@ void main() {
 		Count[i] = 0;
 	}
 	do {
-		printf(" Введите 1, чтобы отсканировать товар \n Введите 2, чтобы добавить товар в корзину \n Введите 3, чтобы напечатать чек \n Введите 0, чтобы выйти \n");
+		printf("Введите 1, чтобы отсканировать товар\n"); 
+		printf("Введите 2, чтобы добавить товар в корзину\n");
+		printf("Введите 3, чтобы напечатать чек\n");
+		printf("Введите 0, чтобы выйти\n");
 		scanf("%d", &j);
 		if (j == 1)
 			Scan();
