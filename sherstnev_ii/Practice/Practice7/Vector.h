@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class Vector
 {
@@ -10,18 +10,20 @@ public:
 	Vector(int);
 	Vector(int, double*);
 	~Vector();
-	void PrintVector(int);
-	double Length();
-	double Angle(Vector&);
+	void PrintVector(int)const;
+	double Length()const;
+	double Angle(Vector&)const;
 	void Gen();
 
-	//Ïåðåãðóçêè
+	//ÐŸÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ¸
 	Vector operator + (const Vector&);
 	Vector operator - (const Vector&);
 	Vector operator * (double);
 	double operator * (const Vector&);
-	Vector operator = (const Vector&);
-	double operator [] (int);
+	const Vector& operator = (const Vector&);
+	double operator [] (const int) const;
+	double& operator [] (const int);
 	Vector& operator += (const Vector&);
 	Vector& operator -= (const Vector&);
+	friend ostream& operator << (ostream&, const Vector&);
 };

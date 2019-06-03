@@ -1,4 +1,4 @@
-#include "Vector.h"
+ï»¿#include "Vector.h"
 #include <iostream>
 #include <math.h>
 #include <string>
@@ -45,7 +45,7 @@ Vector::~Vector()
 	delete[]elements;
 }
 
-void Vector::PrintVector(int n)
+void Vector::PrintVector(int n) const
 {
 	cout << "Vector " << n << ": ";
 	for (int i = 0; i < size; i++) {
@@ -54,7 +54,7 @@ void Vector::PrintVector(int n)
 	cout << endl;
 }
 
-double Vector::Length()
+double Vector::Length() const
 {
 	if (size == 0) throw (string)"Empty vector";
 	int i;
@@ -66,7 +66,7 @@ double Vector::Length()
 	return sqrt(res);
 }
 
-double Vector::Angle(Vector& V)
+double Vector::Angle(Vector& V) const
 {
 	if (size != V.size)
 	{
@@ -89,7 +89,7 @@ void Vector::Gen()
 	}
 }
 
-//Ïåðåãðóçêè
+//ÐŸÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ¸
 
 Vector Vector::operator + (const Vector& V)
 {
@@ -143,7 +143,7 @@ double Vector::operator * (const Vector& V)
 	return sum;
 }
 
-double Vector::operator [] (int n)
+double Vector::operator [] (const int n) const
 {
 	if ((n < 0) || (n >= size))
 	{
@@ -152,7 +152,16 @@ double Vector::operator [] (int n)
 	return elements[n];
 }
 
-Vector Vector::operator = (const Vector& V)
+double& Vector::operator [] (const int n)
+{
+	if ((n < 0) || (n >= size))
+	{
+		throw (string)"Wrong element";
+	}
+	return elements[n];
+}
+
+const Vector& Vector::operator = (const Vector& V)
 {
 	if (size != V.size)
 	{
@@ -174,4 +183,12 @@ Vector& Vector::operator -= (const Vector& V)
 {
 	*this = *this - V;
 	return *this;
+}
+
+ostream & operator<<(ostream & os, const Vector& v)
+{
+	if (v.size == 0) throw (string)"Empty vector";
+	for (int i = 0; i < v.size; i++) {
+		os << v.elements[i] << " ";
+	}
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
@@ -18,7 +19,7 @@ void Scan() {
 	fflush(stdin);
 	fgets(Code, 5, stdin);
 	for (i; i < N; i++) {
-		if (Codes[i] == Code) flag = i;
+		if (strcmp(Code, Codes[i]) == 0) flag = i;
 	}
 	if (flag != -1) {
 		fputs(Names[flag], stdout);
@@ -36,7 +37,7 @@ void AddToCheck() {
 	fflush(stdin);
 	fgets(Code, 5, stdin);
 	for (i = 0; i < N; i++) {
-		if (Codes[i] == Code) flag = i;
+		if (strcmp(Code, Codes[i]) == 0) flag = i;
 	}
 	if (flag != 0) {
 		printf("\nКакое количество товара вы хотите добавить? (Введите 0, если не хотите добавлять) \n");
