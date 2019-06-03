@@ -146,7 +146,7 @@ Matrix Matrix::operator =(const Matrix& M) {
 
 double* Matrix::operator [](int r) {
 	if (r < 0 || r >= rows) {
-		throw (string)"Wrong element";
+		throw "Wrong element";
 	}
 	return &elements[r * cols];
 }
